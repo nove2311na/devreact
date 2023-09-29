@@ -1,12 +1,11 @@
 import React from 'react'
-import StaleState from './ReactHookUseState/StaleState'
-
+import TicTacToe from './ReactHookUseState/TicTacToe/TicTacToe'
 
 
 function App() {
   return (
     <div>
-      <StaleState></StaleState>
+      <TicTacToe></TicTacToe>
     </div>
   )
 }
