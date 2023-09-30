@@ -1,11 +1,12 @@
 import React from 'react'
-import State from './ReactHookUseState/State'
+import StaleState from './ReactHookUseState/StaleState'
+
 
 
 function App() {
   return (
     <div>
-      <State></State>
+      <StaleState></StaleState>
     </div>
   )
 }

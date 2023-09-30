@@ -34,6 +34,11 @@
 // truyền function khi onClick: onClick={function} --> function: hàm callback
 // cách truyền arrow function khi onClick: onClick={() => {}} --> arrow function: hàm callback
 
+// Nguyên tắc dùng Hook (useState):
+// Viết ở trên cùng, không để trong function, loop, if, ...\
+// Chỉ gọi ở root level của function component
+
+// Stale state: state không cập nhật được --> cập nhật state bằng cách truyền vào một function
 
 
 import React, {useState} from 'react'
@@ -50,12 +55,34 @@ function State() {
 
   // useState: nhận vào một giá trị là giá trị khởi tạo của state, trả về một mảng gồm 2 phần tử (phần tử đầu tiên là giá trị của state, phần tử thứ 2 là một function dùng để cập nhật lại giá trị của  state) --> useState: function khởi tạo state và cập nhật lại giá trị của state đó
   const [on, setOn] = useState(true) 
-  
+
+  const handleClick = () => { 
+    console.log('clicked'); 
+    // 1.
+    // setOn(!on)
+
+    // 2.
+    // setOn((on) => !on);
+
+    // 3.
+    function toggleOn(on) {
+      return !on
+    }
+    setOn(toggleOn);
+  }
+
+
   return (
+    // <div className='State'>
+    //   <p>Light {on? 'On' : 'Off'} </p> 
+    //   <p>{on ? 'Light On' : 'Light Off'}</p>
+    //   <button onClick={() => setOn(!on)}>Hi</button>
+    // </div>
+
     <div className='State'>
       <p>Light {on? 'On' : 'Off'} </p> 
       <p>{on ? 'Light On' : 'Light Off'}</p>
-      <button onClick={() => setOn(!on)}>Hi</button>
+      <button onClick={handleClick}>Hi</button>
     </div>
   )
 }
